@@ -46,14 +46,22 @@ class LinkedList:
 
         return count + 1
     
-    def length_recursive(self, node):
+    def length_recursive(self, node, count):
+        if not count:
+            count = 0
+        
         if not node:
             return
-        else:
-            return 1 + self.length_recursive(node.next)
+        
+        elif node.next is None:
+            count += 1
+            return count
+    
+        count += 1
+        return self.length_recursive(node.next, count)
     
     def get_count(self):
-        return self.length_recursive(self.head)            
+        return self.length_recursive(self.head, count=None)            
 
 
 ll = LinkedList('a')
@@ -61,6 +69,6 @@ ll.append('b')
 ll.append('c')
 ll.append('d')
 
-print ll.print_list()
-print ll.length_iterative()
-print ll.get_count()
+print "list = {}".format(ll.print_list())
+print "Length via iteration = {}".format(ll.length_iterative())
+print "Length via recursion = {}".format(ll.get_count())
