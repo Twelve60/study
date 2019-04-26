@@ -31,11 +31,30 @@ class LinkedList:
         while current_node.next != None:
             entries.append(current_node.data)
             current_node = current_node.next
-        
+
         entries.append(current_node.data)
-        
+
         return " -> ".join(entries)
-            
+
+    def length_iterative(self):
+        count = 0
+        current_node = self.head
+
+        while current_node.next != None:
+            current_node = current_node.next
+            count += 1
+
+        return count + 1
+    
+    def length_recursive(self, node):
+        if not node:
+            return
+        else:
+            return 1 + self.length_recursive(node.next)
+    
+    def get_count(self):
+        return self.length_recursive(self.head)            
+
 
 ll = LinkedList('a')
 ll.append('b')
