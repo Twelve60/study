@@ -23,13 +23,25 @@ class LinkedList:
         current_node.next = node
 
         return
+    
+    def print_list(self):
+        entries = []
+        current_node = self.head
+
+        while current_node.next != None:
+            entries.append(current_node.data)
+            current_node = current_node.next
+        
+        entries.append(current_node.data)
+        
+        return " -> ".join(entries)
+            
 
 ll = LinkedList('a')
 ll.append('b')
 ll.append('c')
 ll.append('d')
 
-print "{} -> {} -> {} -> {}".format( ll.head.data,
-                                     ll.head.next.data,
-                                     ll.head.next.next.data,
-                                     ll.head.next.next.next.data )
+print ll.print_list()
+print ll.length_iterative()
+print ll.get_count()
